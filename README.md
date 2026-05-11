@@ -33,11 +33,12 @@ A simple Java console-based CRUD application for managing employee data using Ma
 - Console-based UI
 
 ## Structure
+![structure](assets/structure.png)
 src/
-|-- config/ # Database configuration
-|-- model/ # Employee model class
-|-- repository/ # Database operations (DAO)
-L-- main/ # Main application (App.java)
+- config/ # Database configuration
+- model/ # Employee model class
+- repository/ # Database operations (DAO)
+- main/ # Main application (App.java)
 
 ## How to run
 
