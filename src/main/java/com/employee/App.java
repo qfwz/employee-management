@@ -47,19 +47,31 @@ public class App {
                 case "3": {
                     System.out.println("Enter Employee ID: ");
                     int id = sc.nextInt();
+                    EmployeeModel oldData = repo.getEmployeeData(id);
                     sc.nextLine();
 
-                    System.out.println("Update Employee Name: ");
+                    System.out.println("Update Employee Name (leave blank to keep \'"+ oldData.getName() +"\'): ");
                     String name = sc.nextLine();
+                    if (name.isEmpty()) {
+                        name = oldData.getName();
+                    }
 
-                    System.out.println("Update Employee Division: ");
-                    String role = sc.nextLine();
+                    System.out.println("Update Employee Division (leave blank to keep \'"+ oldData.getDivision() +"\'): ");
+                    String division = sc.nextLine();
+                    if (division.isEmpty()) {
+                        division = oldData.getDivision();
+                    }
 
-                    System.out.println("Update Employee Salary: ");
-                    double salary = sc.nextDouble();
-                    sc.nextLine();
+                    System.out.println("Update Employee Salary (leave blank to keep "+ oldData.getSalary() +"): ");
+                    String salary = sc.nextLine();
+                    double newSalary;
+                    if (salary.isEmpty()) {
+                        newSalary = oldData.getSalary();
+                    } else{
+                        newSalary = Double.parseDouble(salary);
+                    }
 
-                    EmployeeModel updatedEmp = new EmployeeModel(name, role, salary);
+                    EmployeeModel updatedEmp = new EmployeeModel(name, division, newSalary);
 
                     repo.updateEmployee(id, updatedEmp);
                     break;

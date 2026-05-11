@@ -159,6 +159,35 @@ public class EmployeeRepository {
         }
     }
 
+    public EmployeeModel getEmployeeData(int id) {
+        String sql = "SELECT * FROM employees WHERE id = ?";
+
+        try (Connection conn = DatabaseConfig.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new EmployeeModel(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("division"),
+                        rs.getDouble("salary")
+                );
+
+            } else {
+                System.out.println("Employee not found");
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 
 
 //    FIND BY NAME

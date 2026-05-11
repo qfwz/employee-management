@@ -13,6 +13,13 @@ public class EmployeeModel {
         this.salary = salary;
     }
 
+    public EmployeeModel(int id, String name, String division, double salary) {
+        this.id = id;
+        this.name = name;
+        this.division = division;
+        this.salary = salary;
+    }
+
     public int getId() {
         return id;
     }
